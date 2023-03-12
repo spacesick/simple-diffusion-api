@@ -40,7 +40,7 @@ async function generateImage() {
 
 async function updateHtml(imageUrl) {
     let container = document.createElement('div');
-    container.className = 'col-span-1 px-2 py-2';
+    container.className = 'col-span-1 px-2 py-4 mx-auto my-auto';
     let image = document.createElement('img');
     image.src = imageUrl;
     const images = document.getElementById('generated')

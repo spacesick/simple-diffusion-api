@@ -28,7 +28,7 @@ async def generateImage(request: Request):
     ).to("cpu")
 
     json = await request.json()
-    url = f"static/{uuid4()}.png"
+    url = f"static/images/{uuid4()}.png"
 
     image = pipe(json['prompt']).images[0]
     image.save(url)
