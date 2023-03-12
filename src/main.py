@@ -23,14 +23,14 @@ async def root(request: Request):
 async def generateImage(request: Request):
     pipe = DiffusionPipeline.from_pretrained(
         "CompVis/ldm-text2im-large-256",
-        cache_dir="V:/.cache",
+        cache_dir="/home/vincent_yovian01/modelcache",
         resume_download=True
     ).to("cpu")
 
-    prompt = await request.json()
+    json = await request.json()
     url = f"static/{uuid4()}.png"
 
-    image = pipe(prompt).images[0]
+    image = pipe(json['prompt']).images[0]
     image.save(url)
 
     return {
